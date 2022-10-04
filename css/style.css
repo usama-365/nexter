@@ -28,6 +28,11 @@ body {
   font-weight: 400;
 }
 
+.heading-1 {
+  font-size: 4.5rem;
+  color: #f9f7f6;
+  line-height: 1;
+}
 .heading-2 {
   font-size: 4rem;
   font-style: italic;
@@ -73,16 +78,103 @@ body {
 .sidebar {
   background-color: #c69963;
   grid-row: 1/-1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-btn {
+  border-radius: none;
+  border: none;
+  background-color: #fff;
+  height: 2px;
+  width: 4.5rem;
+  margin-top: 4rem;
+}
+.nav-btn::after, .nav-btn::before {
+  background-color: #fff;
+  height: 2px;
+  width: 4.5rem;
+  content: "";
+  display: block;
+}
+.nav-btn::before {
+  transform: translateY(-1.5rem);
+}
+.nav-btn::after {
+  transform: translateY(1.3rem);
 }
 
 .header {
   background-color: #54483a;
   grid-column: full-bleed-start/col-end 6;
+  background-image: linear-gradient(rgba(16, 29, 44, 0.93), rgba(16, 29, 44, 0.93)), url(../img/hero.jpeg);
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  grid-template-rows: 1fr min-content 6rem 1fr;
+  justify-content: center;
+  row-gap: 1.5rem;
+  padding: 8rem;
+  padding-top: 4rem;
+}
+.header__logo {
+  height: 3rem;
+  justify-self: center;
+}
+.header__btn {
+  align-self: start;
+  justify-self: start;
+}
+.header__seen-on-text {
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.6rem;
+  color: #aaa;
+}
+.header__seen-on-text::before, .header__seen-on-text::after {
+  content: "";
+  height: 1px;
+  display: block;
+  background-color: currentColor;
+}
+.header__seen-on-logos {
+  display: flex;
+  justify-content: space-between;
+  filter: brightness(70%);
+}
+.header__seen-on-logos img {
+  height: 2.5rem;
 }
 
 .realtors {
   background-color: #101d2c;
   grid-column: col-start 7/full-bleed-end;
+  padding: 3rem;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  row-gap: 2rem;
+}
+
+.realtor__list {
+  display: grid;
+  grid-template-columns: min-content max-content;
+  align-items: center;
+  column-gap: 2rem;
+  row-gap: 5vh;
+}
+.realtor__img {
+  width: 7rem;
+  display: block;
+  border-radius: 50%;
+}
+.realtor__sold {
+  text-transform: uppercase;
+  color: #aaa;
+  margin-top: -3px;
 }
 
 .features {
