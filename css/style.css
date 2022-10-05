@@ -10,6 +10,11 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
 }
+@media screen and (max-width: 75em) {
+  html {
+    font-size: 50%;
+  }
+}
 
 body {
   font-family: "Nunito", sans-serif;
@@ -21,6 +26,17 @@ body {
   display: grid;
   grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
   grid-template-columns: [sidebar-start] 8rem [sidebar-end full-bleed-start] minmax(8rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(8rem, 1fr) [full-bleed-end];
+}
+@media only screen and (max-width: 62.5em) {
+  .container {
+    grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns: [full-bleed-start] minmax(8rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(8rem, 1fr) [full-bleed-end];
+  }
+}
+@media only screen and (max-width: 50em) {
+  .container {
+    grid-template-rows: 6rem calc(100vh - 6rem);
+  }
 }
 
 .heading-1, .heading-2, .heading-3, .heading-4 {
@@ -81,6 +97,14 @@ body {
   display: flex;
   justify-content: center;
 }
+@media only screen and (max-width: 62.5em) {
+  .sidebar {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
 
 .nav-btn {
   border-radius: none;
@@ -103,6 +127,18 @@ body {
 .nav-btn::after {
   transform: translateY(1.3rem);
 }
+@media only screen and (max-width: 62.5em) {
+  .nav-btn {
+    margin-top: 0;
+    margin-right: 3rem;
+  }
+  .nav-btn::before {
+    transform: translateY(-1.2rem);
+  }
+  .nav-btn::after {
+    transform: translateY(1rem);
+  }
+}
 
 .header {
   background-color: #54483a;
@@ -111,11 +147,22 @@ body {
   background-size: cover;
   background-position: center;
   display: grid;
-  grid-template-rows: 1fr min-content 6rem 1fr;
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+  grid-template-columns: minmax(min-content, max-content);
   justify-content: center;
   row-gap: 1.5rem;
   padding: 8rem;
   padding-top: 4rem;
+}
+@media only screen and (max-width: 50em) {
+  .header {
+    grid-column: 1/-1;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .header {
+    padding: 5rem;
+  }
 }
 .header__logo {
   height: 3rem;
@@ -140,12 +187,15 @@ body {
   background-color: currentColor;
 }
 .header__seen-on-logos {
-  display: flex;
-  justify-content: space-between;
-  filter: brightness(70%);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 3rem;
+  justify-items: center;
 }
 .header__seen-on-logos img {
-  height: 2.5rem;
+  max-height: 2.5rem;
+  max-width: 100%;
+  filter: brightness(70%);
 }
 
 .realtors {
@@ -153,10 +203,29 @@ body {
   grid-column: col-start 7/full-bleed-end;
   padding: 3rem;
   display: grid;
-  align-content: center;
   justify-content: center;
+  align-content: center;
   justify-items: center;
   row-gap: 2rem;
+}
+@media only screen and (max-width: 50em) {
+  .realtors {
+    grid-column: 1/-1;
+  }
+}
+@media only screen and (max-width: 50em) {
+  .realtors {
+    grid-template-columns: repeat(3, min-content max-content);
+    column-gap: 2rem;
+  }
+  .realtors h3 {
+    grid-column: 1/-1;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .realtors {
+    grid-template-columns: max-content;
+  }
 }
 
 .realtor__list {
@@ -170,6 +239,7 @@ body {
   width: 7rem;
   display: block;
   border-radius: 50%;
+  justify-self: start;
 }
 .realtor__sold {
   text-transform: uppercase;
@@ -211,6 +281,13 @@ body {
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
   align-items: center;
+  background-size: cover;
+}
+@media only screen and (max-width: 50em) {
+  .story__pictures {
+    padding: 6rem;
+    grid-column: 1/-1;
+  }
 }
 .story__img--1 {
   width: 100%;
@@ -218,12 +295,24 @@ body {
   grid-column: 2/6;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.1);
 }
+@media only screen and (max-width: 50em) {
+  .story__img--1 {
+    grid-column: 1/4;
+    grid-row: 1/-1;
+  }
+}
 .story__img--2 {
   grid-row: 4/6;
   grid-column: 4/7;
   width: 115%;
   z-index: 200;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+}
+@media only screen and (max-width: 50em) {
+  .story__img--2 {
+    grid-row: 1/-1;
+    width: 100%;
+  }
 }
 .story__content {
   background-color: #f9f7f6;
@@ -233,6 +322,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+}
+@media only screen and (max-width: 50em) {
+  .story__content {
+    grid-column: 1/-1;
+    grid-row: 5/6;
+  }
 }
 .story__text {
   font-size: 1.5rem;

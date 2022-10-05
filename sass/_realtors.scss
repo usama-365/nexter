@@ -3,10 +3,26 @@
   grid-column: col-start 7 / full-bleed-end;
   padding: 3rem;
   display: grid;
-  align-content: center;
   justify-content: center;
+  align-content: center;
   justify-items: center;
   row-gap: 2rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    grid-column: 1/-1;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    h3 {
+      grid-column: 1 / -1;
+    }
+    grid-template-columns: repeat(3, min-content max-content);
+    column-gap: 2rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    grid-template-columns: max-content;
+  }
 }
 
 .realtor {
@@ -22,6 +38,7 @@
     width: 7rem;
     display: block;
     border-radius: 50%;
+    justify-self: start;
   }
 
   &__sold {
